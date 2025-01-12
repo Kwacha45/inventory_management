@@ -1,11 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import InventoryItemViewSet, UserViewSet
-
-router = DefaultRouter()
-router.register(r'inventory', InventoryItemViewSet)
-router.register(r'users', UserViewSet)
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/inventory/', views.get_inventory_items, name='get_inventory_items'),
+    path('api/inventory/add/', views.add_inventory_item, name='add_inventory_item'),
 ]

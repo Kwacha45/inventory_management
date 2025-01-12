@@ -1,0 +1,10 @@
+Fetch All Inventory Items
+
+Curl Command: curl -X GET http://127.0.0.1:8000/api/inventory/
+
+
+Add New Inventory Item
+
+Curl Command: curl -X POST http://127.0.0.1:8000/api/inventory/add/ \
+-H "Content-Type: application/json" \
+-d '{"name": "Keyboard", "quantity": 20, "price": 45.99}'
