@@ -1,7 +1,15 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import InventoryItemViewSet, UserViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+
+router = DefaultRouter()
+router.register(r'inventory', InventoryItemViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
-    path('api/inventory/', views.get_inventory_items, name='get_inventory_items'),
-    path('api/inventory/add/', views.add_inventory_item, name='add_inventory_item'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
